@@ -1,19 +1,19 @@
-import { useState } from 'react'
+
 import { Route, Routes } from 'react-router-dom'
 
-import Login from './components/Login'
-import Home from './components/home/Home'
+import Login from './home/Login'
+import Home from './home/Home'
 import Watch from './components/Watch'
-import Nav from './components/home/Nav'
-import AboutUs from './components/AboutUs'
-import ContactUs from './components/ContactUs'
-import Pay from './components/addition/Pay'
-import Private from './components/addition/Private'
-import Works from './components/addition/Works'
+import Nav from './components/Nav'
+import AboutUs from './home/AboutUs'
+import ContactUs from './home/ContactUs'
+import Pay from './addition/Pay'
+import Private from './addition/Private'
+import Works from './addition/Works'
 import Detail from './components/Detail'
 import Cart from './components/Cart'
-import SignUp from './components/SignUp'
-
+import SignUp from './home/SignUp'
+// import
 function App() {
   
 
@@ -31,7 +31,7 @@ function App() {
   <Route path='/howitWorks' element={<Works/>}/>
   <Route path='/privacyPolicy' element={<Private/>}/>
   <Route path='/paymentPolicy' element={<Pay/>}/>
-  <Route path='/:slug' element={<Detail/>}/>
+  <Route path='/products/:slug' element={<Detail/>}/>
   <Route path='/cart' element={<Cart/> }/>
   <Route path='/' element={<Home/>}/>
   <Route path='/login' element={<Login/>}/>

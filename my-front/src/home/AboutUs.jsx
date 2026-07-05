@@ -1,16 +1,21 @@
 import '.././App.css'
-import { footer, hublot, Richard, zenith } from './constants/index.js'
-import { facee, watts, tube, twitt } from './constants/index.js'
+import { footer, hublot, Richard, zenith } from '../components/constants/index.js'
+import { facee, watts, tube, twitt } from '../components/constants/index.js'
 import React from 'react'
+import Footer from './Footer.jsx'
 
 const AboutUs = () => {
   return (
     <>
 
      <div className='mt-[100px]'>
-      <h1 className='text-center font-bold text-5xl'><span className='text-red-500'>About</span> Us</h1>
-            <div className='flex justify-center px-[50px] max-lg:flex-wrap gap-5 mt-10'>
-                <div className='w-[300px] max-lg:h-[300px] max-lg:w-[600px]'>
+      <div className='  sticky '>
+       <div className='bg-white fixed w-full top-12 p-5 flex justify-center '>
+        <h1 className='text-center  font-bold text-5xl top-16 bg-'><span className='text-red-500'>About</span> Us</h1>
+        </div> 
+        </div>
+            <div className='flex justify-center px-[50px] max-lg:flex-wrap gap-5 mt-[160px] mb-24'>
+                <div className='w-[300px] max-lg:h-[300px] max-lg:w-[600px] mt-'>
                     <img src={hublot} alt="" className='w-full h-full object-cover object-center'/>
                 </div>
 <div className='max-w-[500px] max-md:max-w-full  pol'>
@@ -67,8 +72,8 @@ Thank you for choosing Timeless Watch Co. We’re honored to be part of your jou
            
         </div>
 
-        <div className='bg-black p-10 mt-20'>
-      <div className='flex justify-between'>
+        {/* <div className='bg-black p-10 mt-20'> */}
+      {/* <div className='flex justify-between'>
         <div className='max-w-[300px] text-white'>
   <h1>Follow Us for more updates, remarks, trends and new products</h1>
   <div className='flex'>
@@ -78,8 +83,8 @@ Thank you for choosing Timeless Watch Co. We’re honored to be part of your jou
     <img src={twitt} alt="" width={60}/>
   </div>
   
-</div>
-        {/* <i><FontAwesomeIcon icon={byPrefixAndName.fab['facebook']} /></i> */}
+</div> */}
+        {/* <i><FontAwesomeIcon icon={byPrefixAndName.fab['facebook']} /></i>
         <div className='flex gap-[100px]'>
             {footer.map((foot) => (
 <div key={foot.id} className='text-white'>
@@ -104,7 +109,8 @@ Thank you for choosing Timeless Watch Co. We’re honored to be part of your jou
         <p className='right'>Terms and conditions</p>
 </div>
        
-    </div>
+    </div> */}
+    <Footer/>
     
     </>
   )

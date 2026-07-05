@@ -1,7 +1,8 @@
 import React from 'react'
-import { watc } from '../constants'
-import Buttons from '../buttons'
-import { TUDOR } from '../constants'
+import { watc } from '../components/constants'
+// import {Buttons} from ''
+import { TUDOR } from '../components/constants'
+import Buttons from '../components/buttons'
 
 const Special = () => {
   return (

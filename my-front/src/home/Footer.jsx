@@ -1,11 +1,15 @@
-import React from 'react'
-import { Foot, footer, Fott, tube, twitt, watts } from '../constants'
-import '../../App.css'
+import React, { useEffect, useState } from 'react'
+import { Foot, footer, Fott, tube, twitt, watts } from '../components/constants'
+import '../App.css'
 import { NavLink } from "react-router-dom"
-import { facee } from '../constants/index.js'
+import { facee } from '../components/constants/index.js'
 const Footer = () => {
 //     import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
+// const [ product, setProduct] = useState([])
+console.log(window.location.protocol
+);
 
   return (
     <div className='bg-black p-16'>

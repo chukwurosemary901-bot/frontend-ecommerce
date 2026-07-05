@@ -1,10 +1,11 @@
 import React from 'react'
-import '../../App.css'
+import '../App.css'
+import Footer from '../home/Footer'
 const Pay = () => {
   return (
    <div className='flex justify-center'>
 
-<div className='mt-[100px] max-w-[800px] flex flex-col gap-5'>
+<div className='mt-[100px] max-w-[800px] flex flex-col gap-5 mb-24'>
       <h1 className='pol text-5xl font-bold text-center mb-5'><span className='text'>Payment</span> Policy</h1>
 <p>
  Payment Policy
@@ -94,7 +95,7 @@ Email: support@timelesswatchco.com
 Phone: +234 XXX XXX XXXX
 </p>
 </div>
-
+<Footer/>
    </div> 
   )
 }

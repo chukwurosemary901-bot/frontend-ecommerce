@@ -20,8 +20,8 @@ const Login = () => {
  
   return (
 
-        <div>
-            <div className='w-full'>
+        <div className=' h-screen overflow-hidden'>
+            <div className='w-full h-screen'>
                 <img src="./wat.jpg" alt="" className='relative object-cover object-center w-full h-screen'/>
                 <div className='bg-black/50 w-full h-screen  absolute top-0 left-0'>
                     <div className='flex justify-center py-48'>
@@ -64,7 +64,7 @@ const Login = () => {
 
   
         </div>
-    <NavLink to='/signUp'>  <button className='bg-gray-100 px-28 mt-2 mb-2 rounded-xl h-8 font-bold animate-bounce '>SignUp</button></NavLink>
+    <NavLink to='/signUp'>  <button className='bg-gray-100 px-28 mt-2 mb-2 rounded-xl h-8 font-bold  '>SignUp</button></NavLink>
         </div>
         
         

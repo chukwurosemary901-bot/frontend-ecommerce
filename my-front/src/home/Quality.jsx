@@ -1,7 +1,7 @@
 import React from 'react'
-import { wat } from '../constants'
-import Buttons from '../buttons'
-import { TUDOR } from '../constants'
+import { wat } from '../components/constants'
+import Buttons from '../components/buttons'
+import { TUDOR } from '../components/constants'
 const Quality = () => {
   return (
     <>

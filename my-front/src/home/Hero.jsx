@@ -1,20 +1,20 @@
 
-import Buttons from '../buttons'
-import { rate } from '../data'
-import { wat} from '../../components/constants/index.js'
-// import { r} from '../../assets/images/r.jpg'
-import { watch } from '../constants/index.js'
-import { watc } from '../constants/index.js'
-
-import ShoeCard from '../ShoeCard.jsx'
+import Buttons from '../components/buttons.jsx'
+import { rate } from '../components/data/data.js'
+import { watch } from '../components/constants/index.js'
+import { watc } from '../components/constants/index.js'
+// import '../App.css'
 import { NavLink } from 'react-router-dom'
+import Card from './Card.jsx'
+import { useState } from 'react'
 const Hero = () => {
+
+const [bigWatch, setbigWatch] = useState(watc)
   return (
-    <>
    <div className='flex  max-lg:flex-col max-lg:justify-center  mt-[120px]'>
     
     <div className=' flex flex-col '>
-<p className='mb-5'>Our Summer Collections</p>
+<p className='vet mb-5 '>Our Summer Collections</p>
 <p className='font-extrabold text-6xl  max-sm:text-[50px]'>The New Arrival <span> <br /><span className='text-red-500'> Fashion </span>Wrist-Watches</span></p>
 
 <p className='mt-3 mb-7 max-w-[350px] bg-red-'>Discover stylish Fashion quality Wrist Watches, comfortable and innovative for your active life</p>
@@ -28,7 +28,7 @@ const Hero = () => {
 
     {rate.map((rate) => (
         <div key={rate.id} >
-            <h1 className='font-extrabold text-4xl'> {rate.rate}</h1>
+            <h1 className='font-extrabold text-4xl max-md:text-[28px]'> {rate.rate}</h1>
             <p>{rate.label}</p>
         </div>
     )
@@ -38,26 +38,26 @@ const Hero = () => {
    </div>
    
     </div>
-    <div className='w-[500px] flex flex-1 items-center justify-center mb-10 xl:min-h-screen max-lg:max-w-[6000px]'  >
-    <img src={watc} alt=""   className='object-contain object-center w-full mb-10  '/>
+    <div className=' flex flex-1 items-center justify-center mb-10 xl:min-h-screen sm:min-w-[500px]'  >
+    <img src={bigWatch} alt=""   className='object-contain object-center w-full mb-10  '/>
    </div>
-   <div>
-    {/* {watch.map((shoe)=>(
-        <div key={shoe.id}>
-            <ShoeCard img= {shoe.watch} 
-            changeWatch = {() => {}}
-            bigWatch=''
+   <div className='flex absolute bottom-0 left-10 '>
+    {watch.map((watch)=>(
+        <div key={watch.id}>
+            <Card img= {watch} 
+            changeWatch = {(watch) => setbigWatch(watch)}
+            bigWatch={bigWatch}
             />
         </div>
     ))
-    } */}
+    }
    </div>
     </div> 
     
     
     
     
-    </>
+  
   )
 }
 

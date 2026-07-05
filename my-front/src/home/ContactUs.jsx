@@ -1,7 +1,7 @@
 import React from 'react'
-import { facee, tube, twitt, watts, zenith } from './constants'
+import { facee, tube, twitt, watts, zenith } from '../components/constants'
 import '../App.css'
-import Buttons from './buttons'
+import Buttons from '../components/buttons'
 const ContactUs = () => {
   return (
     <>

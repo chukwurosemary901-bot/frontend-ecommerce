@@ -1,9 +1,9 @@
 import React from 'react'
-import '../../App.css'
+import '../App.css'
 const Private = () => {
   return (
     <div className=' flex justify-center items-center'>
- <div className='mt-[150px] max-w-[800px]'>
+ <div className='mt-[150px] max-w-[800px] mb-24'>
       <h1 className='pol text-5xl font-bold text-center mb-8'><span className='-500'>Privacy</span> Policy</h1>
 
       At Timeless Watch Co., your privacy is important to us. This Privacy Policy explains how we collect, use, protect, and share your personal information when you visit or make a purchase from our website.

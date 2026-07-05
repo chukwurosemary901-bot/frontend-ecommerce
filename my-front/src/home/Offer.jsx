@@ -1,6 +1,7 @@
 import React from 'react'
-import { services } from '../constants/index.js'
-import ShoeCard from '../ShoeCard.jsx'
+import { services } from '../components/constants/index.js'
+import ShoeCard from './ShoeCard.jsx'
+
 const Offer = () => {
   return (
     <>

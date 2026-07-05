@@ -82,8 +82,8 @@ font-family:  'Arial Narrow', Arial, sans-serif;
 color: black;
 text-transform: uppercase;
 letter-spacing: 2px;
-margin-left: 35px;
 display: inline-block;
+
 
 }
 .link::after{
@@ -118,4 +118,11 @@ width: 100%;
 
 .pol{
   font-family: cursive;
+}
+.red{
+ font-size: large;
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.vet{
+  font-family:  sans-serif;
 }

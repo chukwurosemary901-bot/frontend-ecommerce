@@ -1,22 +1,41 @@
 import React, { useEffect, useState } from 'react'
-import { card, p, watch } from './constants'
+import { card, footer, p, watch } from './constants'
 import Buttons from './buttons.jsx'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { addToCart } from '../store/cart.js'
+// import React from 'react'
 
 
 const Watch = (props) => {
  const [search, setSearch] = useState([])
-
+const {slug} = useParams()
  const [wat, setWat] = useState("")
-//  const {slug} = props.data
+
  useEffect(()=> {
-  fetch("src/components/Card.json")
+  fetch("src/components/data/Card.json")
   .then(res => res.json())
   .then(data => setSearch(data))
  }, [])
 
+
+const highlightText = (text, query) => {
+  if (!query) return text;
+
+  const regex = new RegExp(`(${query})`, "gi");
+  console.log(regex)
+  
+  console.log(regex);
+  return text.split(regex).map((part, index) =>
+    part.toLowerCase() === query.toLowerCase() ? (
+      <span key={index} className="text-red-500 font-bold">
+        {part}
+      </span>
+    ) : (
+      part
+    )
+  );
+};
 
 // useEffect(() => {
 //   count
@@ -35,42 +54,73 @@ dispatch(addToCart({
 }))
 }
 
+const allProducts = async () => {
+  
+try {
 
+  const response = await fetch ("http://localhost:1111/product/")
+
+  const jsonData = await response.json()
+  console.log(jsonData);
+  console.log(jsonData);
+  console.log(jsonData);
+console.log(`hello`);
+
+  // setProduct(jsonData)
+
+ 
+  
+} catch (error) {
+  console.error(`error`, error);
+  
+}
+
+}
+useEffect( () => {
+  allProducts()
+}
+
+)
 
   return (
     <>
     <div className=''>
-      <div>
+      <div className=' bg-green-600 shadow-l w-full mt-52'>
+<div className='sticky bg-white sh'>
 
-         <div className='w-full flex flex-col justify-center items-center mt-[100px] gap-5 relative' >
+         <form className='w-full flex flex-col fixed justify-center bg-white p-10 items-center top-12 gap-5 ' >
 <h1 className='font-bold text-2xl'>Find the  <span className='text-red-500'>Watch</span> that suits your taste</h1>
     <input type="text"
     placeholder='Search for your favourite watch  '
     value={wat}
     onChange={e => setWat(e.target.value)}
-    className=' focus:outline-red-500 bg-white shadow- shadow-xl w-[500px] h-[40px] flex justify-between '
+    className=' focus:outline-red-500 bg-white shadow- shadow-xl w-[500px] h-[40px] flex justify-between p-3 '
     
    
    />
-  <div className='bg-red-400 flex items-center px-3  py-1 rounded-sm absolute right-[450px] top-14'>
+  <div className='bg-red-400 flex items-center px-3  py-1 rounded-sm fixed right-[450px] top-[155px]'>
       Search Here
     </div>
-    </div>
+    </form>
+</div>
+  
       </div>
       
     
-    <div className='gap-[100px] grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 px-[100px] md:px-[50px] sm:gap-[100px] md:gap-[50px] mt-20 '>
+    <div className='gap-[100px] grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 px-[100px] md:px-[50px] sm:gap-[100px] md:gap-[50px] mt-56 '>
     
         {filteredCards.map(card => (
-            <div key={card.id} className='bg-white shadow-xl min-w-[250px] md:min-w-[200px] '>
+            <div key={card.id} className='bg-white shadow-xl min-w-[250px] md:min-w-[200px] py'>
                 <div className=' w-full h-[300px] '>
-                 <NavLink to={card.slug}>
+                 <NavLink to={`/products/${card.slug}`}>
                    <img src={card.watch} alt="" className='object-cover object-center w-full h-full'/>
                   </NavLink>  
                     </div>
-            <h1 className='mt-[10px] font-bold'>{card.name}</h1>
+
+                    <div className='p-3'>
+                       <h1 className='mt-[10px] font-bold text-[20px]'> {highlightText(card.name, wat)}</h1>
             <p className='card text-re'>$ {card.price}</p>
-          <div className='flex justify-center mb-5'>
+          <div className='flex justify-center mb-4 mt-4'>
             
            
         <button className='bg-red-500 rounded-full py-3 px-7 flex gap-2'onClick= {()=>handleAddToCart(card)}>
@@ -84,6 +134,8 @@ dispatch(addToCart({
 <p className='text- font-semibold'>Add to Cart</p>
         </button>
             </div>  
+                    </div>
+           
             </div>)
         )}
     </div>

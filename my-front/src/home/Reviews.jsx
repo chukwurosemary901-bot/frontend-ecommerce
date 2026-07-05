@@ -1,6 +1,6 @@
 import React from 'react'
-import { reviews } from '../constants'
-import '../../App.css'
+import { reviews } from '../components/constants'
+import '../App.css'
 const Reviews = () => {
   return (
     <>

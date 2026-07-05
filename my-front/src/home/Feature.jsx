@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { watch } from '../constants'
-import '../../App.css'
-import Buttons from '../buttons'
-import { addToCart } from '../../store/cart'
+import { watch } from '../components/constants'
+import '../App.css'
+import Buttons from '../components/buttons'
 import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../store/cart'
 const Feature = () => {
 // const [data, setData] =useState([])
 // useEffect(()=> {
@@ -27,11 +27,12 @@ console.log(carts);
         <p className='max-w-[450px] mt-5  text-sm ' >Experience top notch quality products just for you, one of a kind.Checkout our world of comfort and value and confidence </p>
    <div className='grid lg:grid-cols-4 lg:gap-[60px]  sm:grid-cols-2 grid-cols-1  sm:gap-[60px] gap-[60px] pr-[20px] mt-10 '>
     {watch.map((watch) => (
-    <div key={watch.id} className=' min-w-[230px] lg:min-w-[200px]   border-none overflow-hidden gap-[px]  '>
+    <div key={watch.id} className=' min-w-[230px] lg:min-w-[200px] bg-white shadow-xl   border-none overflow-hidden gap-[px]  '>
 <div className='h-[230px] w-full bg-green-300  rounded-lg'><img src={watch.watch} alt="" width={150} className='object-cover object-center w-full h-full -lg'/></div>
-<p className='text-slate-500 font-semibold px-1 mt-3'>  <span className='text-red-500'>★</span>{watch.rate}</p>
-<h1 className=' under'>{watch.name}</h1>
-<h3 className='px-1 text-red-500 font-semibold font-mono'>{watch.price}</h3>
+
+<div className='px-2 py-3'><p className='text-slate-500 font-semibold px-1 mt-3'>  <span className='text-red-500'>★</span>{watch.rate}</p>
+  <h1 className=' under'>{watch.name}</h1>
+<h3 className='px-1 text-red-500 font-semibold font-mono'>${watch.price}</h3>
 <div className='flex justify-center'>
  <button className='bg-red-500 rounded-full py-3 px-7 flex gap-2'onClick= {()=>handleAddToCart(watch)}>
    {<i className='text-white'><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -42,6 +43,7 @@ console.log(carts);
   <p className='text- font-semibold'>Add to Cart</p> 
   </button>
 </div>
+  </div>
     </div> 
   
   ))}
