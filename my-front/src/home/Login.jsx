@@ -1,70 +1,100 @@
 import React, { useState } from 'react'
 import './Login.css'
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { api } from '../api';
 const Login = () => {
- 
+ const [error, setError] = useState('')
  const [user, setUser] = useState({
-  username:"",
+  email:"",
   password:""
  })
  const handleChange=(e)=>{
     const {name, value, type, checked}= e.target;
     setUser(prev =>({
-        ...prev, [name]:type ==="checkbox"? checked:value
+       ...prev, [name]: value
     }))
  };
-  const handleSubmit=(e)=>{
+ const navigate = useNavigate()
+
+  const handleSubmit=async(e)=>{
     e.preventDefault();
-    console.log("Submitted:", formData);
- };
+      console.log("Submitted:", user);
+
+    try {
+        
+const res = await api.post(
+    '/users/login', user
+)
+const userData = res.data.user
+localStorage.setItem(user, JSON.stringify(userData))
+console.log('Login Success2', res.data.user);
+console.log('Login Success', res.data);
+setError('')
+navigate('/')
+    } catch (err) {
+        const errorMessage =  err.response?.data?.error || 'Something went wrong'
+        console.log('Login error',  errorMessage);
+        
+        setError(errorMessage)
+    }
+  }
  
   return (
 
         <div className=' h-screen overflow-hidden'>
             <div className='w-full h-screen'>
                 <img src="./wat.jpg" alt="" className='relative object-cover object-center w-full h-screen'/>
-                <div className='bg-black/50 w-full h-screen  absolute top-0 left-0'>
+                <div className='bg-black/70 w-full h-screen  absolute top-0 left-0'>
                     <div className='flex justify-center py-48'>
         {/* <img src="./des.jpg" alt="" className='bg-cover'/> */}
         <div className='bg-white/15 max-w-md px-10 py-0 text-center rounded-lg flex flex-col justify-center'>
             
-                    <h1 className='font-bold text-2xl text-slate-200'>Login</h1>
-                  <h3 className='mt-[30px] font-semibold text-slate-300'>Have an Account</h3>
-         <form action="" className='flex flex-col-reverse gap-2 ' onSubmit={handleSubmit}>
+                    <h1 className='font-bold text-3xl text-white'>Login</h1>
+                  <h3 className='mt-[10px] font-semibold text-slate-300'>Have an Account</h3>
+         <form action="" className='grid gap- mt-6' onSubmit={handleSubmit}>
             <input 
         type='email' 
-        placeholder='Username'
-        name='username'
-        value={user.username}
+        placeholder='Email'
+        name='email'
+        value={user.email}
+        autoComplete='email'
         onChange={handleChange}
-        className='-w-60 rounded-xl h-8 px-2 focus:outline-blue-700'/>
+        className='vet rounded-lg mb-5 h-9 px-2 -blue-700 bg-transparent text-red-300  outline-white outline-none border-white border-'/>
             <input 
         type='password'
         placeholder='Password'
         value={user.password}
         name='password'
         onChange={handleChange}
-        className='-w-60 rounded-xl h-8 px-2  focus:outline-blue-700'
-        />
+        autoComplete='current-password'
+        className='vet rounded-lg mt-15 h-9 px-2 -blue-700 bg-transparent text-red-300  outline-white outline-none border-white border-'/>
+        
+        {error && <p className='text-red-500'> {error}</p>}
+        <button type='submit'  
+           className='bg-black/70 px-28 mt-5 cursor-pointer  mb-1 rounded-xl text-white h-8 font-bold  hover:bg-red-500 hover:text-white disabled:bg-gray-700 
+'>SIGN IN</button>
+        
          </form>
- <NavLink to='/'> <button type='submit' disabled={!user.password || !user.username} 
-  className='bg-green-500 px-28 mt-2 mb-2 rounded-xl h-8 font-bold 22 hover:bg-green-600 disabled:bg-gray-700' >SIGN IN</button></NavLink>
-  <div className='flex gap-10 mt-'>
-    <div className='flex gap-2 '>
+
+  <div className='flex gap-10 mt-1 mb-3 mt-'>
+    <div className='flex gap-2  '>
        <input type='checkbox'
      />
     <button><h1 className='font-semibold text-gray-300  shadow-[250px]'>Remeber Me</h1></button> </div>
     <button><p className='Forget font-semibold text-gray-300'>Forgot Password</p></button>
 
   </div>
-<div className='flex items-center gap-2 justify-center '>
-    <div className='h-[1px] w-28 bg-black'></div>
-    <p>or</p>
-    <div className='h-[1px] w-28 bg-black'></div>
+<div className='flex items-center mt-5 gap-2 justify-center '>
+
+    <p className='text-white'>Dont Have an Account </p>
+  
 
   
         </div>
-    <NavLink to='/signUp'>  <button className='bg-gray-100 px-28 mt-2 mb-2 rounded-xl h-8 font-bold  '>SignUp</button></NavLink>
+    <NavLink to='/signUp'>  <button className='bg-gray-100 px-28 mt-2 mb-2 rounded-xl h-8 font-bold btn-success bg-black/70
+ text-white
+ hover:bg-red-600 hover:text-white'>SignUp</button></NavLink>
         </div>
         
         

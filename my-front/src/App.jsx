@@ -13,10 +13,11 @@ import Works from './addition/Works'
 import Detail from './components/Detail'
 import Cart from './components/Cart'
 import SignUp from './home/SignUp'
+import { useSelector } from 'react-redux'
 // import
 function App() {
   
-
+// const [user, setUser] = useState(null)
   return (
     <div>
 

@@ -126,3 +126,10 @@ width: 100%;
 .vet{
   font-family:  sans-serif;
 }
+.ded{
+  transition: all 0.3s ease-in-out;
+}
+
+.vet::placeholder{
+  color: antiquewhite;
+}

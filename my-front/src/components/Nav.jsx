@@ -8,7 +8,7 @@ const Nav = () => {
  
  
  
- 
+ const [menu, openMenu] = useState(false)
  
  const [count, setCount] = useState(0)
  const carts = useSelector(store => store.cart.items)
@@ -28,7 +28,7 @@ setCount(total)
           <p className="logo absolute left-0">Timeless Co.</p>
           </div>
 
-        <div className='flex max-md:hidden max-md:w-72' id="ded">
+        <div className={`flex flex-col transition-all ease-in-out md:flex md:static md:flex-row overflow-hidden  duration-300 max-md:w-[350px] md:max-h-full ${menu ? 'max-h-96 px-12': 'max-h-0'}`} id="ded">
 <ul className='flex gap-10 max-lg:gap-3 text-white'>
  <li className="min-w-[50px] flex justify-center items-center max-md:text-[8px]">
 
@@ -89,7 +89,7 @@ Contact Us
 </ul>
         </div>
         <div>
-          <i className="hidden max-md:block cursor-pointer" id="ham"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+          <i className="hidden max-md:block cursor-pointer " onClick={() => openMenu(!menu)} id="ham"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
   <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
 </svg>
 </i>

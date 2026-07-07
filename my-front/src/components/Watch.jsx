@@ -112,9 +112,9 @@ useEffect( () => {
         {filteredCards.map(card => (
             <div key={card.id} className='bg-white shadow-xl min-w-[250px] md:min-w-[200px] py'>
                 <div className=' w-full h-[300px] '>
-                 <NavLink to={`/products/${card.slug}`}>
+                 {/* <NavLink to={`/products/${card.slug}`}> */}
                    <img src={card.watch} alt="" className='object-cover object-center w-full h-full'/>
-                  </NavLink>  
+                  {/* </NavLink>   */}
                     </div>
 
                     <div className='p-3'>
